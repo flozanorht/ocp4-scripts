@@ -33,22 +33,24 @@ then
 		echo 'Cluster operators that are not available:'
 		echo "${notaval}"
 	else
-		echo 'All Cluster Operators are available.'
+		echo 'All cluster operator are available.'
 	fi
 	if [ -n "${degreaded}" ]
 	then
 		echo 'Cluster operators that are degraded:'
 		echo "${degraded}"
 	else
-		echo 'No cluster operators is degraded.'
+		echo 'No cluster operator is degraded.'
 	fi
 	if [ -n "${progress}" ]
 	then
 		echo 'Cluster operators that are progressing:'
 		echo "${progress}"
 	else
-		echo 'No cluster operators is progressing.'
+		echo 'No cluster operator is progressing.'
 	fi
+
+	exit 1
 
 else
 	echo "All cluster operators are healthy and idle."

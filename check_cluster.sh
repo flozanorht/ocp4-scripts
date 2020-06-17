@@ -7,6 +7,8 @@ cd $(dirname $0)
 
 if ./check_api.sh
 then
-    ./check_nodes.sh
+    ./check_nodes.sh   
     ./check_cos.sh
+else
+    exit 1
 fi

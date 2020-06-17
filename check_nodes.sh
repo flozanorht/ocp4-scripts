@@ -63,6 +63,8 @@ then
 		echo 'No cluster node is under pid pressure.'
 	fi
 
+	exit 1
+
 else
 	echo "All cluster nodes are ready and none is under pressure."
 fi
