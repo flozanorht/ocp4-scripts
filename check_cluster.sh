@@ -4,5 +4,9 @@
 # assumes you have either KUBECONFIG set of did oc login before as cluster admin
 
 cd $(dirname $0)
-./check_nodes.sh
-./check_cos.sh
+
+if ./check_api.sh
+then
+    ./check_nodes.sh
+    ./check_cos.sh
+fi
