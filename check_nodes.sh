@@ -13,7 +13,8 @@ pid=''
 for node in ${allnodes}
 do
 	name=$( echo ${node} | awk -F/ '{print $2}' )
-	if [ "False" = "$( oc get ${node} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}' )" ]
+	# The Ready condition could also be Unknown
+	if [ "True" != "$( oc get ${node} -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}' )" ]
 	then
 		notready="${notready} ${name}"
 	fi
