@@ -15,15 +15,16 @@ then
         if oc get clusterversion -o name &>/dev/null
         then
           version=$( oc get clusterversion version -o jsonpath='{.status.desired.version}' )
-          echo "OpenShift version is: '${version}'"
+          echo "✔ OpenShift version is: '${version}'"
         else
-          echo "Please perform an 'oc login' or export a valid KUBECONFIG file for a cluster administrator."
+          echo "✘ Please perform an 'oc login' or export a valid KUBECONFIG file for a cluster administrator."
+          exit 1
         fi
     else
-        echo "Cannot connect to OpenShit at '${api}'"
+        echo "✘ Cannot connect to OpenShit at '${api}'"
         exit 2
     fi
 else
-    echo "Please perform an 'oc login' or export a valid KUBECONFIG file."
+    echo "✘ Please perform an 'oc login' or export a valid KUBECONFIG file."
     exit 1
 fi

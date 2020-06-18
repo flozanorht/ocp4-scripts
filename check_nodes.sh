@@ -37,35 +37,35 @@ then
 
 	if [ -n "${notready}" ]
 	then
-		echo 'Cluster nodes that are not ready:'
-		echo "${notready}"
+		echo '✘ Cluster nodes that are not ready:'
+		echo "✘ ${notready}"
 	else
-		echo 'All cluster nodes are ready.'
+		echo '✔ All cluster nodes are ready.'
 	fi
 	if [ -n "${memory}" ]
 	then
-		echo 'Cluster nodes that are under memory pressure:'
-		echo "${memory}"
+		echo '✘ Cluster nodes that are under memory pressure:'
+		echo "✘ ${memory}"
 	else
-		echo 'No cluster node is under memory pressure.'
+		echo '✔ No cluster node is under memory pressure.'
 	fi
 	if [ -n "${disk}" ]
 	then
-		echo 'Cluster nodes that are under disk pressure:'
-		echo "${disk}"
+		echo '✘ Cluster nodes that are under disk pressure:'
+		echo "✘ ${disk}"
 	else
-		echo 'No cluster node is under disk pressure.'
+		echo '✔ No cluster node is under disk pressure.'
 	fi
 	if [ -n "${pid}" ]
 	then
-		echo 'Cluster nodes that are under pid pressure:'
-		echo "${pid}"
+		echo '✘ Cluster nodes that are under pid pressure:'
+		echo "✘ ${pid}"
 	else
-		echo 'No cluster node is under pid pressure.'
+		echo '✔ No cluster node is under pid pressure.'
 	fi
 
 	exit 1
 
 else
-	echo "All cluster nodes are ready and none is under pressure."
+	echo "✔ All cluster nodes are ready and none is under pressure."
 fi

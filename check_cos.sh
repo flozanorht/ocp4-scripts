@@ -30,28 +30,28 @@ then
 
 	if [ -n "${notaval}" ]
 	then
-		echo 'Cluster operators that are not available:'
-		echo "${notaval}"
+		echo '✘ Cluster operators that are not available:'
+		echo "✘ ${notaval}"
 	else
-		echo 'All cluster operator are available.'
+		echo '✔ All cluster operator are available.'
 	fi
 	if [ -n "${degreaded}" ]
 	then
-		echo 'Cluster operators that are degraded:'
-		echo "${degraded}"
+		echo '✘ Cluster operators that are degraded:'
+		echo "✘ ${degraded}"
 	else
-		echo 'No cluster operator is degraded.'
+		echo '✔ No cluster operator is degraded.'
 	fi
 	if [ -n "${progress}" ]
 	then
-		echo 'Cluster operators that are progressing:'
-		echo "${progress}"
+		echo '✘ Cluster operators that are progressing:'
+		echo "✘ ${progress}"
 	else
-		echo 'No cluster operator is progressing.'
+		echo '✔ No cluster operator is progressing.'
 	fi
 
 	exit 1
 
 else
-	echo "All cluster operators are healthy and idle."
+	echo "✔ All cluster operators are healthy and idle."
 fi
