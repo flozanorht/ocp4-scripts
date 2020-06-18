@@ -14,7 +14,7 @@ They also assume cluster admin privileges.
 
 The `check_cluster.sh` script just invokes all other scripts.
 All scripts exit with status != 0 in case of any not healthy condition.
-Not that some not healthy conditions are expected to disaper by themselfs after a few moments.
+Not that some not healthy conditions are expected to disaper by themselves after a few moments.
 
 The current set of scripts is terribly inefficient.
 Each of them may take minutes running because they perform lots of small API calls (oc commands).
