@@ -1,13 +1,20 @@
 These are simple Bash scripts designed to provide a quick status of you OpenShift 4 cluster: is it healthy?
 
+
+// Changes for consistency of output:
+// - All pods are healthy
+// - There are xx pods not healthy, in the following projects:
+// - A PVCs are bound
+// - There are xx PVS not bound in, the following projects:
+
 ```
 $ ./check_cluster.sh
 ✔ OpenShift is reacheable and up, at version: '4.4.6'
 ✔ All cluster nodes are ready and none is under pressure.
 ✔ All cluster operators are healthy and idle.
+✔ All pods are fine.
+✔ All PVCs are bound.
 ✔ There are no CSRs.
-✔ There are 257 pods on the cluster, none of them are in error, 0 of them are pending.
-✔ There are 1 PVCs on the cluster, all of them are bound.
 ```
 
 All scripts assume that you have either the KUBECONFIG variable set or performed oc login before.

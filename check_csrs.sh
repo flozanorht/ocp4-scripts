@@ -10,10 +10,10 @@ then
     test "${num_csrs}" = "1" && verb='is' || verb='are'
     if [ "${num_csrs}" -gt "${approved}" ]
     then
-        echo "✘ There ${verb} ${num_csrs} CSRs, ${not_approved} of them are not approved yet."
+        echo "✘ There ${verb} ${num_csrs} CSR, ${not_approved} of them are not approved yet."
         exit 1
     else
-        echo "✔ There ${verb} ${num_csrs} CSRs, all of them are approved"
+        echo "✔ All CSRs are approved."
     fi
 else
     echo "✔ There are no CSRs."
