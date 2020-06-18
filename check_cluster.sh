@@ -15,6 +15,8 @@ then
     status=$(( status || $? ))
     ./check_csrs.sh
     status=$(( status || $? ))
+    ./check_pods.sh
+    status=$(( status || $? ))
     exit $status
 else
     exit 1
