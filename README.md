@@ -7,6 +7,7 @@ $ ./scripts/check_cluster.sh
 ✔ All cluster operators are healthy and idle.
 ✔ There are no CSRs.
 ✔ There are 257 pods on the cluster, none of them are in error, 0 of them are pending.
+✔ There are 1 PVCs on the cluster, all of them are bound.
 ```
 
 All scripts assume that you have either the KUBECONFIG variable set or performed oc login before.
