@@ -29,5 +29,5 @@ then
 
     exit 1
 else
-    echo "✔ There are ${num_pods} pods on the cluster, none of them in error, ${num_pending} of them are pending."
+    echo "✔ There are ${num_pods} pods on the cluster, none of them are in error, ${num_pending} of them are pending."
 fi

@@ -15,7 +15,7 @@ then
         if oc get clusterversion -o name &>/dev/null
         then
           version=$( oc get clusterversion version -o jsonpath='{.status.desired.version}' )
-          echo "✔ OpenShift version is: '${version}'"
+          echo "✔ OpenShift is reacheable and up, at version: '${version}'"
         else
           echo "✘ Please perform an 'oc login' or export a valid KUBECONFIG file for a cluster administrator."
           exit 1
