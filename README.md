@@ -1,12 +1,5 @@
 These are simple Bash scripts designed to provide a quick status of you OpenShift 4 cluster: is it healthy?
 
-
-// Changes for consistency of output:
-// - All pods are healthy
-// - There are xx pods not healthy, in the following projects:
-// - A PVCs are bound
-// - There are xx PVS not bound in, the following projects:
-
 ```
 $ ./check_cluster.sh
 ✔ OpenShift is reacheable and up, at version: '4.4.6'
