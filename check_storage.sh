@@ -50,7 +50,7 @@ num_not_bound_pvcs=$( echo "${not_bound_pvcs}" | wc -w )
 if [ "${num_not_bound_pvcs}" -gt 0 ]
 then
     ns_not_bound_pvcs=$( oc get pvc -A -o jsonpath="{.items[?(@.status.phase!='Bound')].metadata.namespace}" )
-    echo '✘ Namespaces with PVCS that are not bound:'
+    echo '✘ Namespaces with PVCs that are not bound:'
     echo "✘ ${ns_not_bound_pvcs}"
     exit 1
 else
