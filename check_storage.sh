@@ -4,13 +4,46 @@
 # assumes you have either KUBECONFIG set of did oc login before as cluster admin
 
 # I see no status for a storage class
-#num_classes=$( oc get storageclass -o name | wc -l )
+defclass=$( oc get storageclass -o jsonpath='{.items[?(@.metadata.annotations.storageclass\.kubernetes\.io/is-default-class=="true")].metadata.name}' )
 
-# Checking only PVCs for now
-#num_pvs=$( oc get pv -o name | wc -l )
-#num_pvcs=$( oc get pvc -A -o name | wc -l )
+if [ -z "${defclass}" ]
+then
+    echo '✘ There is no default storage class.'
+else
+    provisioner=$( oc get storageclass "${defclass}" -o jsonpath='{.provisioner}' )
 
-not_bound_pvcs=$( oc get pvc -A -o jsonpath="{.items[?(@.status.phase!='Bound')].metadata.name}" )
+    if [ -z "${provisioner}" ]
+    then
+        echo "✘ The default storage class does not support dynamic provisioning."
+    else
+        echo "✔ There is a default storage class for dynamic provisioning."
+    fi
+fi
+
+released_pvs=$( oc get pv -o jsonpath='{.items[?(@.status.phase=="Released")].metadata.name}' )
+failed_pvs=$( oc get pv -o jsonpath='{.items[?(@.status.phase=="Failed")].metadata.name}' )
+
+if [ -n "${released_pvs}" -o -n "${failed_pvs}" ]
+then
+    if [ -n "${released_pvs}" ]
+    then
+        echo '✘ Released PVs:'
+        echo "✘ ${released_pvs}"
+    else
+        echo "✔ No PV is released."
+    fi
+    if [ -n "${failed_pvs}" ]
+    then
+        echo '✘ Failed PVs:'
+        echo "✘ ${released_pvs}"
+    else
+        echo "✔ No PV is failed."
+    fi
+else
+    echo "✔ All PVs are either bound or available."
+fi
+
+not_bound_pvcs=$( oc get pvc -A -o jsonpath='{.items[?(@.status.phase!="Bound")].metadata.name}' )
 
 num_not_bound_pvcs=$( echo "${not_bound_pvcs}" | wc -w )
 
