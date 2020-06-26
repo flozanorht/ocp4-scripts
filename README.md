@@ -7,11 +7,11 @@ $ ./check_cluster.sh
 ✔ OpenShift is reacheable and up, at version: '4.4.8'
 ✔ All cluster nodes are ready and none is under pressure.
 ✔ All cluster operators are healthy and idle.
+✔ There are no CSRs.
 ✔ All pods are either running or succeeded.
 ✔ There is a default storage class for dynamic provisioning.
 ✔ All PVs are either bound or available.
 ✔ All PVCs are bound.
-✔ There are no CSRs.
 ```
 
 I created these scripts as a convenient way to check temporary and short-lived clusters used for teaching, that are created, deleted, stopped, and restarted frequently.
