@@ -13,6 +13,8 @@ then
     status=$(( status || $? ))
     ./check_cos.sh
     status=$(( status || $? ))
+    ./check_ops.sh
+    status=$(( status || $? ))
     ./check_csrs.sh
     status=$(( status || $? ))
     ./check_pods.sh
