@@ -16,6 +16,6 @@ then
         echo "✔ All CSRs are approved."
     fi
 else
-    echo "✔ There are no CSRs."
+    echo "✔ There are no CSRs awaiting for approval."
 fi
 
