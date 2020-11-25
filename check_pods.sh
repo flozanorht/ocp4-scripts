@@ -14,7 +14,7 @@ then
     if [ -n "${failed}" ]
     then
         echo '✘ Namespaces with failed pods:'
-        echo "✘ $( echo ${failed} | sort | uniq )"
+        echo "✘ $( echo ${failed} | tr ' ' '\n' | sort | uniq )"
     else
         echo "✔ There are no failed pods."
     fi
@@ -22,7 +22,7 @@ then
     if [ -n "${unknown}" ]
     then
         echo '✘ Namespaces with pods in an unknown stage:'
-        echo "✘ $( echo ${unknown} | sort | uniq )"
+        echo "✘ $( echo ${unknown} | tr ' ' '\n' | sort | uniq )"
     else
         echo "✔ There are no pods in an unknown state."
     fi
@@ -30,7 +30,7 @@ then
     if [ -n "${pending}" ]
     then
         echo '✘ Namespaces with pending pods:'
-        echo "✘ $( echo ${pending} | sort | uniq )"
+        echo "✘ $( echo ${pending} | tr ' ' '\n' | sort | uniq )"
     else
         echo "✔ There are no pending pods."
     fi
