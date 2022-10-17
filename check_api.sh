@@ -15,7 +15,7 @@ else
 
     if ! curl --fail -k -s --connect-timeout 9 "${api}/healthz" &>/dev/null
     then
-        echo "✘ Cannot connect to OpenShit at '${api}'"
+        echo "✘ Cannot connect to OpenShift at '${api}'"
         exit 2
     else
         if ! oc get clusterversion -o name &>/dev/null
