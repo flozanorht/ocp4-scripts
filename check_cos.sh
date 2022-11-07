@@ -3,7 +3,11 @@
 # vim: ts=4 sw=4
 # assumes you have either KUBECONFIG set of did oc login before as cluster admin
 
-allcos=$( oc get co -o name )
+if ! allcos=$( oc get co -o name 2>/dev/null )
+then
+    echo "✘ Cannot query cluster operators. Proceeding under the assumption this is a Microshift cluster."
+	exit
+fi
 
 notaval=''
 degraded=''
