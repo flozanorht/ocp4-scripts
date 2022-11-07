@@ -24,14 +24,15 @@ else
         else
           echo "✘ The API health endpoint '${api}/healthz' requires authentication, proceeding anyway."
         fi
+    fi
+    if ! oc get clusterversion -o name &>/dev/null
+    then
+      echo "✘ Cannot get a clusterversion resource. Processing under the assumption this is a Microshift cluster."
     else
-        if ! oc get clusterversion -o name &>/dev/null
-        then
-          echo "✘ Please perform an 'oc login' or export a valid KUBECONFIG file for a cluster administrator."
-          exit 1
-        else
-          version=$( oc get clusterversion version -o jsonpath='{.status.desired.version}' )
-          echo "✔ OpenShift is reacheable and up, at version: '${version}'"
-        fi
+      if ! oc get nodes -o name &>/dev/null
+      then
+        version=$( oc get clusterversion version -o jsonpath='{.status.desired.version}' )
+        echo "✔ OpenShift is reacheable and up, at version: '${version}'"
+      fi
     fi
 fi
