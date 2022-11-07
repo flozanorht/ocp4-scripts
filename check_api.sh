@@ -15,8 +15,15 @@ else
 
     if ! curl --fail -k -s --connect-timeout 9 "${api}/healthz" &>/dev/null
     then
-        echo "✘ Cannot connect to OpenShift at '${api}'"
-        exit 2
+        # Workaround for Microshift
+        status=$(curl --fail -k -s --connect-timeout 9 -o /dev/null -w "%{http_code}" "${api}/healthz")
+        if [ "${status}" != "401" ]
+        then
+          echo "✘ Cannot connect to OpenShift at '${api}'"
+          exit 2
+        else
+          echo "✘ The API health endpoint '${api}/healthz' requires authentication, proceeding anyway."
+        fi
     else
         if ! oc get clusterversion -o name &>/dev/null
         then
