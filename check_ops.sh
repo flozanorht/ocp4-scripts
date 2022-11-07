@@ -44,7 +44,7 @@ then
 
 	#if [ -n "${notsucceeded}" ]
 	#then
-		echo '✘ OLM operators that are still installing or failed installation:'
+		echo '✘ Add-on operators that are still installing or failed installation:'
 		echo "✘ ${notsucceeded}"
 	#else
 	#	echo "✔ ${numops} OLM operators are installed sucessfully."
@@ -74,6 +74,6 @@ then
 	exit 1
 
 else
-	echo "✔ All OLM operators are installed."
-	#echo "✔ All OLM operators are healthy and idle."
+	echo "✔ All Add-on operators are installed."
+	#echo "✔ All Add-on operators are healthy and idle."
 fi
