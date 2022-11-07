@@ -6,8 +6,13 @@
 # Other scripts checking namespaced resoures (ex: pods) only report namespaces.
 # I believe that the number of operators will not be so big that reporting on each one would be an issue
 
-allops=$( oc get csv -A -o jsonpath="{range .items[*]}{.metadata.namespace}/{.metadata.name} {end}" )
 #numops=$( echo "${allops}" | wc -w )
+if ! allops=$( oc get csv -A -o jsonpath="{range .items[*]}{.metadata.namespace}/{.metadata.name} {end}" )
+then
+    echo "✘ Cannot query Add-on operators. Proceeding under the assumption this is a Microshift cluster."
+	exit
+fi
+
 
 notsucceeded=''
 #XXX not sure what to do with the conditions from CSVs
