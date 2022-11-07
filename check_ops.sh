@@ -9,7 +9,7 @@
 #numops=$( echo "${allops}" | wc -w )
 if ! allops=$( oc get csv -A -o jsonpath="{range .items[*]}{.metadata.namespace}/{.metadata.name} {end}" 2>/dev/null )
 then
-    echo "✘ Cannot query Add-on operators. Proceeding under the assumption this is a Microshift cluster."
+    echo "✘ Cannot query add-on operators. Proceeding under the assumption this is a Microshift cluster."
 	exit
 fi
 
@@ -44,7 +44,7 @@ then
 
 	#if [ -n "${notsucceeded}" ]
 	#then
-		echo '✘ Add-on operators that are still installing or failed installation:'
+		echo '✘ add-on operators that are still installing or failed installation:'
 		echo "✘ ${notsucceeded}"
 	#else
 	#	echo "✔ ${numops} OLM operators are installed sucessfully."
@@ -74,6 +74,6 @@ then
 	exit 1
 
 else
-	echo "✔ All Add-on operators are installed."
-	#echo "✔ All Add-on operators are healthy and idle."
+	echo "✔ All add-on operators are installed."
+	#echo "✔ All add-on operators are healthy and idle."
 fi
