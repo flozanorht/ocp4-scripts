@@ -19,23 +19,23 @@ else
         status=$(curl --fail -k -s --connect-timeout 9 -o /dev/null -w "%{http_code}" "${api}/healthz")
         if [ "${status}" != "401" ]
         then
-          echo "✘ Cannot connect to OpenShift at '${api}'"
-          exit 2
+            echo "✘ Cannot connect to OpenShift at '${api}'"
+            exit 2
         else
-          echo "✘ The API health endpoint '${api}/healthz' requires authentication, proceeding anyway."
+            echo "✘ The API health endpoint '${api}/healthz' requires authentication, proceeding anyway."
         fi
     fi
     if ! oc get nodes -o name &>/dev/null
     then
-      echo "✘ Please perform an 'oc login' or export a valid KUBECONFIG file for a cluster administrator."
-      exit 1
+        echo "✘ Please perform an 'oc login' or export a valid KUBECONFIG file for a cluster administrator."
+        exit 1
     else
-      if ! oc get clusterversion -o name &>/dev/null
-      then
-        echo "✘ Cannot get a clusterversion resource. Proceeding under the assumption this is a Microshift cluster."
-      else
-        version=$( oc get clusterversion version -o jsonpath='{.status.desired.version}' )
-        echo "✔ OpenShift is reacheable and up, at version: '${version}'"
-      fi
+        if ! oc get clusterversion -o name &>/dev/null
+        then
+            echo "✘ Cannot get a clusterversion resource. Proceeding under the assumption this is a Microshift cluster."
+        else
+            version=$( oc get clusterversion version -o jsonpath='{.status.desired.version}' )
+            echo "✔ OpenShift is reacheable and up, at version: '${version}'"
+        fi
     fi
 fi
