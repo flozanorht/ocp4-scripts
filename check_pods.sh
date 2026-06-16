@@ -14,7 +14,11 @@ then
     if [ -n "${failed}" ]
     then
         echo '✘ Namespaces with failed pods:'
-        echo "✘ $( echo ${failed} | tr ' ' '\n' | sort | uniq )"
+        #echo "✘ $( echo ${failed} | tr ' ' '\n' | sort | uniq )"
+        nes="$( echo ${failed} | tr ' ' '\n' | sort | uniq )"
+		for ns in $nes; do
+		   	echo "✘ $ns"
+		done
     else
         echo "✔ There are no failed pods."
     fi
@@ -22,7 +26,11 @@ then
     if [ -n "${unknown}" ]
     then
         echo '✘ Namespaces with pods in an unknown stage:'
-        echo "✘ $( echo ${unknown} | tr ' ' '\n' | sort | uniq )"
+        #echo "✘ $( echo ${unknown} | tr ' ' '\n' | sort | uniq )"
+        nes="$( echo ${unknown} | tr ' ' '\n' | sort | uniq )"
+		for ns in $nes; do
+		   	echo "✘ $ns"
+		done
     else
         echo "✔ There are no pods in an unknown state."
     fi
@@ -30,7 +38,11 @@ then
     if [ -n "${pending}" ]
     then
         echo '✘ Namespaces with pending pods:'
-        echo "✘ $( echo ${pending} | tr ' ' '\n' | sort | uniq )"
+        #echo "✘ $( echo ${pending} | tr ' ' '\n' | sort | uniq )"
+        nes="$( echo ${pending} | tr ' ' '\n' | sort | uniq )"
+		for ns in $nes; do
+		   	echo "✘ $ns"
+		done
     else
         echo "✔ There are no pending pods."
     fi
